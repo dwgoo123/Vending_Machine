@@ -28,10 +28,13 @@ void Widget::changeMoney(int n)
         ui->pbTea->setEnabled(true);
         ui->pbGongcha->setEnabled(true);
     } else if (money >= 150){
-        ui->pbTea->setEnabled(true);
         ui->pbCoffee->setEnabled(true);
+        ui->pbTea->setEnabled(true);
+        ui->pbGongcha->setEnabled(false);
     } else if (money >= 100){
         ui->pbCoffee->setEnabled(true);
+        ui->pbTea->setEnabled(false);
+        ui->pbGongcha->setEnabled(false);
     } else {
         ui->pbCoffee->setEnabled(false);
         ui->pbTea->setEnabled(false);
@@ -39,6 +42,13 @@ void Widget::changeMoney(int n)
     }
 
 }
+
+/*
+void Widget::reset()
+{
+    money = 0;
+}
+*/
 void Widget::on_pbCoffee_clicked()
 {
     changeMoney(-100);
@@ -81,4 +91,14 @@ void Widget::on_pb100_clicked()
 void Widget::on_pb500_clicked()
 {
     changeMoney(200);
+}
+
+void Widget::on_reset_clicked()
+{
+    //reset();
+    money = 0;
+    ui->lcdNumber->display(QString::number(money));
+    ui->pbCoffee->setEnabled(false);
+    ui->pbTea->setEnabled(false);
+    ui->pbGongcha->setEnabled(false);
 }

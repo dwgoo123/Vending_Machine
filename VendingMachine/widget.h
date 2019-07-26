@@ -15,6 +15,7 @@ public:
     explicit Widget(QWidget *parent = nullptr);
     ~Widget();
     void changeMoney(int n);
+    //void reset();
     int money = 0;
     QMessageBox msg;
     int exc10 = 0;
@@ -34,6 +35,8 @@ private slots:
     void on_pb100_clicked();
 
     void on_pb500_clicked();
+
+    void on_reset_clicked();
 
 private:
     Ui::Widget *ui;
